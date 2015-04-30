@@ -1,0 +1,13 @@
+apply plugin: 'war'
+apply plugin: 'jetty'
+
+dependencies {
+	compile 'org.apache.activemq:activemq-all:'+activeMQVersion
+	compile 'org.apache.activemq:activemq-spring:'+activeMQVersion
+	compile 'org.springframework:spring-core:'+springVersion
+	compile 'org.springframework:spring-web:'+springVersion
+}
+
+jettyRun {
+	httpPort = 8082
+}

@@ -1,0 +1,18 @@
+apply plugin: 'war'
+apply plugin: 'jetty'
+
+dependencies {
+	compile 'com.fasterxml.jackson.core:jackson-core:2.5.0'
+	compile 'com.fasterxml.jackson.core:jackson-databind:2.5.0'
+	compile 'org.springframework:spring-core:'+springVersion
+	compile 'org.springframework:spring-webmvc:'+springVersion
+	compile 'org.springframework:spring-jms:'+springVersion
+	compile 'org.apache.camel:camel-spring:'+camelVersion
+	compile 'org.apache.camel:camel-jms:'+camelVersion
+	compile 'org.apache.camel:camel-jackson:'+camelVersion
+	compile 'org.apache.activemq:activemq-camel:'+activeMQVersion	
+}
+
+jettyRun {
+	httpPort = 8081
+}
