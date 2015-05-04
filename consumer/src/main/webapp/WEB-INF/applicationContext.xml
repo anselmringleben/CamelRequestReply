@@ -11,7 +11,7 @@
        http://camel.apache.org/schema/spring/camel-spring.xsd">
 
 	<context:annotation-config />
-	<context:component-scan base-package="ringleben.CamelRequestReply.producer" />
+	<context:component-scan base-package="ringleben.CamelRequestReply.consumer" />
 
 	<bean id="jmsConnectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
 		<!-- <property name="brokerURL" value="vm://myBroker" /> -->
@@ -40,14 +40,9 @@
 		errorHandlerRef="loggingErrorHandler" allowUseOriginalMessage="false">
 
 		<route id="fileImport">
-			<from uri="file://data/?move=.done&amp;moveFailed=.error" />
-			<split>
-				<tokenize token="\n" />
-				<convertBodyTo type="java.lang.String" />
-				<to uri="log:echo?level=DEBUG" />
-				<to uri="activemq:queue:fileContent" pattern="InOut" />
-				<bean ref="fileImportReplyConsumer" />
-			</split>
+			<from uri="activemq:queue:fileContent" />
+			<to uri="log:echo?level=DEBUG" />
+			<bean ref="fileImportConsumer" />
 		</route>
 	</camelContext>
 </beans>
