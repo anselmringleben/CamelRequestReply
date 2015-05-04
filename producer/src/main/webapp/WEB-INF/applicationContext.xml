@@ -11,7 +11,7 @@
        http://camel.apache.org/schema/spring/camel-spring.xsd">
 
 	<context:annotation-config />
-	<context:component-scan base-package="com.volkswagen.nps.dataexchange" />
+	<context:component-scan base-package="ringleben.CamelRequestReply.producer" />
 
 	<bean id="jmsConnectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
 		<!-- <property name="brokerURL" value="vm://myBroker" /> -->
