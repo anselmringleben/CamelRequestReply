@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:amq="http://activemq.apache.org/schema/core"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context-2.5.xsd
+		http://activemq.apache.org/schema/core
+		http://activemq.apache.org/schema/core/activemq-core-5.10.0.xsd">
+	<!-- setup an embedded ActiveMQ Broker -->
+	<amq:broker id="broker" brokerName="ExampleBroker" useJmx="true"
+		persistent="false">
+		<amq:transportConnectors>
+			<amq:transportConnector name="tcp"
+				uri="tcp://0.0.0.0:61610" />
+		</amq:transportConnectors>
+		<amq:managementContext>
+			<amq:managementContext connectorPort="2011"
+				createConnector="true" />
+		</amq:managementContext>
+	</amq:broker>
+</beans>

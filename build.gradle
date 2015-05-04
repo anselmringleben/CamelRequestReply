@@ -4,6 +4,7 @@ subprojects {
 	version = '0.1'
 	
 	ext {
+		log4jVersion = "1.2.17"
 		springVersion = "4.1.4.RELEASE"
 		lombokVersion = "1.14.8"
 		camelVersion = "2.14.0"
@@ -17,5 +18,6 @@ subprojects {
 	
 	dependencies {
 		compile 'org.projectlombok:lombok:' + lombokVersion
+		compile 'log4j:log4j:' + log4jVersion
 	}
 }
